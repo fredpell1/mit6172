@@ -83,6 +83,11 @@ int matrix_multiply_run(const matrix* A, const matrix* B, matrix* C) {
   tbassert(B->cols == C->cols,
            "B->cols = %d, C->cols = %d\n", B->cols, C->cols);
 
+  for (int i = 0; i < C->rows; i++) {
+    for (int j = 0; j < C->cols; j++) {
+      C->values[i][j] = 0;
+    }
+  }
 
   for (int i = 0; i < A->rows; i++) {
     for (int j = 0; j < B->cols; j++) {
